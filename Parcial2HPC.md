@@ -124,7 +124,7 @@ De los valores obtenidos presentados en la Tabla1 se puede destacar que para mat
 
 También se esperaba que el desempeño fuese mejor a medida que aumentaban los nodos, pero esto depende de muchos factores, siendo el más relevante la implementación. Ya que como se mencionó anteriormente el paso de información durante el proceso de MPI y distribuir el trabajo entre nodos puede ser costoso. Sin embargo, esto ha sido probado hasta un tamaño de 10.000 filas x 10.000 columnas lo que da un total de 100.000.000 elementos y no basta con solo esta información, al igual que sucede con multiplicación de matrices de manera secuencial y en paralelo, la optimización de esta se puede empezar a reflejar con cálculos superiores a 10000x10000 elementos. 
 
-Para detectar de manera correcta el desempeño de esta implementación cabe señalar que es relevante el tiempo de procesamiento durante el envió y recibimiento de información para Cuda-Aware MPI, donde:
+Para detectar de manera correcta el desempeño de esta implementación cabe señalar que es relevante el tiempo de procesamiento durante el envió y recibimiento de información para Cuda+MPI, donde:
 
 #####Tiempo de operación Send
 
