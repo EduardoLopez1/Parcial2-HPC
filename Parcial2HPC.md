@@ -1,6 +1,6 @@
 #Segundo parcial High Performance Computing
 ##CPU v/s GPU
-###Multiplicación de matrices utilizando CUDA-Aware MPI y MPI
+###Multiplicación de matrices utilizando CUDA + MPI y MPI
 
 													Integrantes: Eduardo López
 
