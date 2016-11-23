@@ -103,11 +103,11 @@ Esta implementación no solo vuelve sencilla trabajar con aplicaciones CUDA+MPI,
 
 ##Caso de estudio
 
-Bueno basta de explicaciones y entremos al caso de estudio como tal. Para esta representación se busca estudiar el desempeño de implementación MPI y CUDA, como también ya se mencionó antes el desarrollo de ambas juntas (CUDA-Aware MPI), de tal manera que quede plasmado su forma de correr aplicaciones de gran esfuerzo computacional como lo son las multiplicaciones de matrices.
+Bueno basta de explicaciones y entremos al caso de estudio como tal. Para esta representación se busca estudiar el desempeño de implementación MPI y CUDA, como también ya se mencionó antes el desarrollo de ambas juntas (CUDA+MPI), de tal manera que quede plasmado su forma de correr aplicaciones de gran esfuerzo computacional como lo son las multiplicaciones de matrices.
 
 Para el presente caso de estudio se evaluará el desempeño de la multiplicación de matrices utilizando hasta 4 nodos remotos.
 
-#####Desarrollo utilizando CUDA-Aware MPI
+#####Desarrollo utilizando CUDA + MPI
 
 Para todo el caso de estudio se han utilizado matrices de tamaño cuadrático por lo que el tamaño en las tablas representa fila x columna.
 
@@ -115,7 +115,7 @@ Para todo el caso de estudio se han utilizado matrices de tamaño cuadrático po
 
 [Tabla1. Valores obtenidos de procesamiento según tiempo y cantidad de nodos utilizados.](http://puu.sh/sqWFT/8bd30cca2e.png)
 
-#####Grafico procesamiento CUDA-Aware MPI
+#####Grafico procesamiento CUDA+MPI
 ![](http://puu.sh/sqWSX/c8a868c94e.png)
 
 [Grafico1. Representación gráfica de Tabla1.](http://puu.sh/sqWSX/c8a868c94e.png)
@@ -150,7 +150,7 @@ En este caso se va a tomar en consideración que la implementación en CPU será
 
 [Tabla4.Tiempos de procesamiento utilizando MPI.](http://puu.sh/sqXoi/4bb738847a.png)
 
-Claramente los tiempos de procesamiento serán mayores ya que esta implementación solo posee MPI y no existe trabajo en GPU como lo hace Cuda-Aware MPI. Por lo que el tiempo de procesamiento crece drásticamente y cuyo desarrollo en matrices de tamaño 10000x10000 elementos requiere bastante tiempo.
+Claramente los tiempos de procesamiento serán mayores ya que esta implementación solo posee MPI y no existe trabajo en GPU como lo hace Cuda+MPI. Por lo que el tiempo de procesamiento crece drásticamente y cuyo desarrollo en matrices de tamaño 10000x10000 elementos requiere bastante tiempo.
 
 ![](http://puu.sh/sqXoJ/3a4e8ae03f.png)
 
@@ -191,11 +191,11 @@ La GPU hoy en día cumple la mayor parte de sus funcionalidades a nivel de calid
 
 ##Conclusiones
 
-MPI es una excelente herramienta y de fácil uso para traspaso de mensajes donde, un proceso puede ser dividido en tareas las cuales podrán ser desarrolladas, en este caso, por múltiples nodos remotos. Dividir estas tareas utilizando MPI simplifica en gran parte el tiempo de procesamiento por ejemplo en la Tabla4; el tiempo mínimo utilizado para la multiplicación de matrices de 5000x5000 elementos ha sido de 39,2259 segundos. Este mismo cálculo de manera secuencial (Véase Imagen6 en Primer Parcial HPC), el tiempo aproximadamente redondea los 700 segundos de procesamiento. Ahora bien, MPI es una herramienta poderosa, pero lo es más aun cuando se trabaja utilizando GPU, aquí es donde entra CUDA cuya finalidad es utilizar los cientos de núcleos que se poseen en GPU para acelerar el poder de cálculo colosal. Donde para el mismo proceso de multiplicar matrices de 5000x5000 elementos utilizando CUDA-Aware MPI, el mejor tiempo obtenido ha sido de 7,32606 segundos, claramente es un mejor tiempo de procesamiento que MPI por si solo y de manera secuencial.
+MPI es una excelente herramienta y de fácil uso para traspaso de mensajes donde, un proceso puede ser dividido en tareas las cuales podrán ser desarrolladas, en este caso, por múltiples nodos remotos. Dividir estas tareas utilizando MPI simplifica en gran parte el tiempo de procesamiento por ejemplo en la Tabla4; el tiempo mínimo utilizado para la multiplicación de matrices de 5000x5000 elementos ha sido de 39,2259 segundos. Este mismo cálculo de manera secuencial (Véase Imagen6 en Primer Parcial HPC), el tiempo aproximadamente redondea los 700 segundos de procesamiento. Ahora bien, MPI es una herramienta poderosa, pero lo es más aun cuando se trabaja utilizando GPU, aquí es donde entra CUDA cuya finalidad es utilizar los cientos de núcleos que se poseen en GPU para acelerar el poder de cálculo colosal. Donde para el mismo proceso de multiplicar matrices de 5000x5000 elementos utilizando CUDA+MPI, el mejor tiempo obtenido ha sido de 7,32606 segundos, claramente es un mejor tiempo de procesamiento que MPI por si solo y de manera secuencial.
 
 Aun así, no ha sido posible demostrar con claridad el desempeño de utilizar nodos remotos sin embargo está de más decir que los data set utilizados para demostrar su desempeño han sido pequeños para términos de GPU ya que probablemente la optimización de estos recursos se ve reflejada sobre los 100.000.000 de elementos a calcular.
 
-De todas maneras, queda más que claro que CUDA-Aware MPI utilizando este principio de traspaso de mensajes y GPU es mucha más eficiente que solo el traspaso de mensajes MPI.
+De todas maneras, queda más que claro que CUDA+MPI utilizando este principio de traspaso de mensajes y GPU es mucha más eficiente que solo el traspaso de mensajes MPI.
 
 
 
